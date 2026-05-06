@@ -28,59 +28,47 @@
         /* Navigation Partagée */
         .main-nav {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
+            padding: 1rem 3rem;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(2, 6, 23, 0.9);
-            backdrop-filter: blur(15px);
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
 
         .nav-logo img {
-            height: 65px; /* Plus grand pour être hyper visible */
+            height: 60px;
             width: auto;
             filter: drop-shadow(0 0 15px var(--primary-glow));
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo img:hover {
+            transform: scale(1.1);
         }
 
         .nav-links {
             display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 1rem;
         }
 
         .nav-btn {
-            text-decoration: none; color: var(--text-muted); font-weight: 800; font-size: 0.7rem;
-            text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4rem 0.8rem;
+            text-decoration: none; color: var(--text-muted); font-weight: 800; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem 1rem;
             border: 1px solid var(--border-color); border-radius: 50px; transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.03);
-            white-space: nowrap;
         }
 
         .nav-btn.active { color: #fbbf24; border-color: #fbbf24; background: rgba(251, 191, 36, 0.1); }
 
         body {
             font-family: 'Outfit', sans-serif; background-color: var(--bg-color); color: var(--text-color);
-            line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; padding-top: 150px; /* Plus d'espace pour la nav haute */
-        }
-
-        .hero-logo {
-            width: 160px;
-            height: auto;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 30px var(--primary-glow));
-            animation: pulse 4s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
+            line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; padding-top: 100px;
         }
 
         body::before {
@@ -96,27 +84,6 @@
         .glass-card {
             background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color);
             border-radius: var(--radius); padding: 3.5rem; margin-bottom: 2.5rem; position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Animations d'apparition (Reveal) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Interactions au survol */
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.01);
-            background: rgba(15, 23, 42, 0.8);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
         }
 
         /* Thème Massif */
@@ -168,7 +135,7 @@
 
     <nav class="main-nav">
         <div class="nav-logo">
-            <img src="/logo.png" alt="Club Informatique Logo">
+            <img src="/logo.png" alt="Logo Club Informatique">
         </div>
         <div class="nav-links">
             <a href="Pitch_Conference_Club.html" class="nav-btn">Présentation</a>
@@ -181,9 +148,6 @@
     <!-- SECTION 1: LE THÈME (L'ÉLECTROCHOC) -->
     <section>
         <div class="container">
-            <div style="text-align: center;">
-                <img src="/logo.png" alt="Logo Club Informatique" class="hero-logo">
-            </div>
             <div class="glass-card" style="border: 2px solid var(--primary);">
                 <div class="theme-label">THÈME</div>
                 <h1 class="theme-title">
@@ -257,16 +221,16 @@
 
             <div class="action-grid">
                 <!-- Pôle Événementiel -->
-                <div class="glass-card action-card reveal">
+                <div class="glass-card action-card">
                     <h3>Pôle Événementiel Phare</h3>
                     <ul class="action-list">
                         <li><strong>La Conférence Électrochoc :</strong> Lancement officiel avec démonstrations en direct de la puissance de l'étudiant augmenté.</li>
-                        <li><strong>Le Hackathon "Inter-Filières" :</strong> Résoudre un problème du campus en mixant plusieurs profils de filières différentes.</li>
+                        <li><strong>Le Hackathon "Inter-Filières" :</strong> Résoudre un problème du campus en mixant Droit, Santé et Tech.</li>
                     </ul>
                 </div>
 
                 <!-- Pôle Formation -->
-                <div class="glass-card action-card reveal">
+                <div class="glass-card action-card">
                     <h3>Pôle Formation & Bootcamps</h3>
                     <ul class="action-list">
                         <li><strong>Bootcamps Productivité :</strong> Sessions intensives de 2h pour configurer les systèmes de prise de notes.</li>
@@ -275,7 +239,7 @@
                 </div>
 
                 <!-- Pôle Services -->
-                <div class="glass-card action-card reveal">
+                <div class="glass-card action-card">
                     <h3>Pôle Services & Support</h3>
                     <ul class="action-list">
                         <li><strong>La Clinique Numérique :</strong> Permanence hebdomadaire d'audit de CV et de support technique personnel.</li>
@@ -284,7 +248,7 @@
                 </div>
 
                 <!-- Pôle Ressources -->
-                <div class="glass-card action-card reveal">
+                <div class="glass-card action-card">
                     <h3>Pôle Ressources Partagées</h3>
                     <ul class="action-list">
                         <li><strong>La "Prompt Library" :</strong> Base de données de templates de requêtes IA par matière universitaire.</li>
@@ -298,34 +262,5 @@
     <!-- Scripts de synchronisation OBLIGATOIRES -->
     <script src="https://js.pusher.com/8.0/pusher.min.js"></script>
     <script src="./sync-client.js"></script>
-
-    <script>
-        // Système d'animation à l'apparition (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-active');
-                    observer.unobserve(entry.target); // On n'anime qu'une fois
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Appliquer également aux autres cartes pour la cohérence
-        document.querySelectorAll('.glass-card').forEach(card => {
-            if (!card.classList.contains('reveal')) {
-                card.classList.add('reveal');
-                observer.observe(card);
-            }
-        });
-    </script>
 </body>
 </html>
