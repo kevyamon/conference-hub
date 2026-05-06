@@ -236,31 +236,6 @@
             box-shadow: 0 0 10px var(--primary-glow);
         }
 
-        /* Navigation Sync Indicator */
-        .sync-status {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .sync-dot {
-            width: 6px;
-            height: 6px;
-            background: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #10b981;
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -407,12 +382,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Navigation Sync Indicator -->
-    <div class="sync-status">
-        <div class="sync-dot"></div>
-        <span>Sync Temps Réel Activée</span>
-    </div>
 
     <!-- Scripts de synchronisation OBLIGATOIRES -->
     <script src="https://js.pusher.com/8.0/pusher.min.js"></script>
