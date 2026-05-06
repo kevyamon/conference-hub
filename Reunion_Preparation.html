@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réunion Stratégique | Club Informatique</title>
+    
+    <!-- Typographie Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette de Couleurs */
+            --bg-color: #020617;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.5);
+            --accent: #6366f1;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass-shine: rgba(255, 255, 255, 0.03);
+            
+            /* Espacement et Rayon */
+            --radius: 16px;
+            --section-gap: 4rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navigation Partagée */
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-btn.active {
+            color: #fbbf24;
+            border-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding-top: 80px; /* Espace pour la nav fixe */
+        }
+
+        /* Arrière-plan animé subtil */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* Typographie */
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        /* Layout Diapositives */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-shine), transparent);
+        }
+
+        /* Grilles de contenu */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Section Titles */
+        .section-header {
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .section-header p {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+        }
+
+        /* Spécificités des Sections */
+        .problem-box {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .list-item .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-top: 0.6rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* Navigation Sync Indicator */
+        .sync-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sync-dot {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 2rem 1rem;
+            }
+            .glass-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+        <a href="Pitch_Conference_Club.html" class="nav-btn">Présentation</a>
+        <a href="faq.html" class="nav-btn">FAQ</a>
+        <a href="Dossier_Strategique.html" class="nav-btn">Stratégie</a>
+        <a href="Reunion_Preparation.html" class="nav-btn active">Réunion</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container animate-in">
+            <h1>Réunion Stratégique <br> <span class="serif">Club Informatique</span></h1>
+            <p>Préparation de l'année universitaire et orientation stratégique de la Conférence de Lancement.</p>
+        </div>
+    </section>
+
+    <!-- Section 1: Vision -->
+    <section id="vision">
+        <div class="container">
+            <div class="section-header">
+                <p>Analyse & Objectifs</p>
+                <h2>La Vision & Le Constat</h2>
+            </div>
+            
+            <div class="glass-card">
+                <div class="problem-box">
+                    <h3 style="margin-bottom: 1rem;">Le Problème</h3>
+                    <p style="color: var(--text-muted);">La fracture numérique sur le campus ne se limite pas à l'accès au matériel. Elle réside dans la <span class="highlight-text">méconnaissance des outils essentiels</span> pour l'insertion professionnelle : bureautique avancée, utilisation pertinente des IA génératives et gestion de la présence en ligne.</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1rem;">La Vision</h3>
+                    <p style="color: var(--text-muted);">Notre mission est de faire de l'informatique un <span class="highlight-text">levier du quotidien</span>, accessible et indispensable pour tous, qu'un étudiant soit en Droit, Médecine ou Lettres.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Conférence -->
+    <section id="conference">
+        <div class="container">
+            <div class="section-header">
+                <p>Événement Majeur</p>
+                <h2>Conférence de Lancement</h2>
+            </div>
+            
+            <div class="glass-card" style="margin-bottom: 2rem; border-left: 4px solid var(--accent);">
+                <h3>Thème : "Au-delà du Code"</h3>
+                <p style="color: var(--text-muted); font-style: italic;">L'Informatique comme Moteur de la Réussite Étudiante et Professionnelle.</p>
+            </div>
+
+            <div class="grid">
+                <div class="glass-card">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Optimisation des Études</h3>
+                    <div class="list-item"><div class="dot"></div><p>Maîtrise des outils collaboratifs (Notion, Google Workspace)</p></div>
+                    <div class="list-item"><div class="dot"></div><p>Utilisation de l'IA pour la recherche académique</p></div>
+                    <div class="list-item"><div class="dot"></div><p>Méthodes d'organisation numérique avancées</p></div>
+                </div>
+                <div class="glass-card">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Employabilité</h3>
+                    <div class="list-item"><div class="dot"></div><p>Construction d'un profil LinkedIn percutant</p></div>
+                    <div class="list-item"><div class="dot"></div><p>Conception de CV numériques modernes</p></div>
+                    <div class="list-item"><div class="dot"></div><p>Compréhension des compétences tech attendues</p></div>
+                </div>
+                <div class="glass-card">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Cybersécurité</h3>
+                    <div class="list-item"><div class="dot"></div><p>Protection des données personnelles</p></div>
+                    <div class="list-item"><div class="dot"></div><p>Sécurisation de l'identité numérique</p></div>
+                    <div class="list-item"><div class="dot"></div><p>Hygiène numérique sur le campus</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Roadmap -->
+    <section id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <p>Plan d'Action</p>
+                <h2>Feuille de Route Annuelle</h2>
+            </div>
+            
+            <div class="grid">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1.5rem;">Ateliers Pratiques</h3>
+                    <p style="color: var(--text-muted);">Sessions intensives sur Excel avancé, initiation au montage vidéo et création de portfolios web (No-code).</p>
+                </div>
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1.5rem;">Assistance Technique</h3>
+                    <p style="color: var(--text-muted);">Permanences hebdomadaires pour l'optimisation des ordinateurs et l'installation de logiciels académiques.</p>
+                </div>
+                <div class="glass-card" style="grid-column: span 1; border: 1px solid var(--primary);">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Le Grand Projet</h3>
+                    <p><span class="highlight-text">Hackathon "Tech for Good"</span></p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Équipes mixtes inter-filières pour résoudre des problématiques concrètes du campus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Modèle Économique -->
+    <section id="logistique">
+        <div class="container">
+            <div class="section-header">
+                <p>Ressources & Viabilité</p>
+                <h2>Modèle Économique & Logistique</h2>
+            </div>
+            
+            <div class="grid">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1rem;">Financement</h3>
+                    <p style="color: var(--text-muted);">Sollicitation des fonds de solidarité universitaires et des initiatives étudiantes (FSDIE).</p>
+                </div>
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1rem;">Sponsoring</h3>
+                    <p style="color: var(--text-muted);">Partenariats stratégiques avec des entreprises locales souhaitant identifier les futurs talents.</p>
+                </div>
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1rem;">Prestation</h3>
+                    <p style="color: var(--text-muted);">Création de supports de communication et sites vitrines pour les associations partenaires de l'université.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Sync Indicator -->
+    <div class="sync-status">
+        <div class="sync-dot"></div>
+        <span>Sync Temps Réel Activée</span>
+    </div>
+
+    <!-- Scripts de synchronisation OBLIGATOIRES -->
+    <script src="https://js.pusher.com/8.0/pusher.min.js"></script>
+    <script src="./sync-client.js"></script>
+</body>
+</html>
