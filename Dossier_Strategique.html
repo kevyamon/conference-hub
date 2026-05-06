@@ -22,7 +22,8 @@
         .main-nav {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-bottom: 3rem;
             padding-top: 2rem;
         }
@@ -31,14 +32,15 @@
             text-decoration: none;
             color: var(--muted);
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border: 1px solid var(--border-color);
             border-radius: 50px;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.03);
+            white-space: nowrap;
         }
 
         .nav-btn:hover {
@@ -60,17 +62,18 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 2rem 1.5rem;
         }
 
         header {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             position: relative;
         }
 
@@ -81,7 +84,7 @@
             border: 1px solid var(--gold);
             padding: 0.5rem 1rem;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -90,7 +93,7 @@
 
         h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 7vw, 4rem);
             line-height: 1.1;
             margin: 0 0 1.5rem 0;
             background: linear-gradient(to right, #fff, #94a3b8);
@@ -100,20 +103,20 @@
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--muted);
             max-width: 800px;
             margin: 0 auto;
         }
 
         section {
-            margin-bottom: 6rem;
+            margin-bottom: 4rem;
         }
 
         .section-header {
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -121,14 +124,14 @@
 
         .section-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary);
             line-height: 1;
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -138,27 +141,27 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 3rem;
+            padding: 2rem;
             backdrop-filter: blur(10px);
         }
 
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
         }
 
         .theme-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            padding: 2rem;
+            padding: 1.5rem;
             border-left: 4px solid var(--primary);
             transition: transform 0.3s;
         }
@@ -170,14 +173,14 @@
 
         .theme-title {
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-top: 0;
             margin-bottom: 1rem;
         }
 
         .theme-desc {
             color: var(--muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
 
@@ -191,7 +194,7 @@
             position: relative;
             padding-left: 1.5rem;
             margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #e2e8f0;
         }
 
@@ -204,17 +207,18 @@
         }
 
         .pitch-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
             color: #e2e8f0;
-            border-left: 4px solid var(--gold);
-            padding-left: 2rem;
+            border-left: 3px solid var(--gold);
+            padding-left: 1.2rem;
             font-style: italic;
+            text-align: justify;
         }
 
         .title-idea {
             background: rgba(0, 0, 0, 0.3);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 6px;
             margin-bottom: 1rem;
             border: 1px solid var(--border-color);
@@ -224,13 +228,35 @@
             color: var(--gold);
             margin: 0 0 0.5rem 0;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
 
         .title-idea p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--muted);
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            header {
+                margin-bottom: 3rem;
+            }
+            section {
+                margin-bottom: 3.5rem;
+            }
+            .glass-panel {
+                padding: 1.5rem;
+            }
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
