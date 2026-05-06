@@ -36,8 +36,15 @@ if (isMaster) {
     });
 
 } else {
+    // Bloquer le scroll manuel pour l'audience
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+
     channel.bind('client-scroll', (data) => {
         const positionY = typeof data === 'object' ? data.y : data;
+        
+        // On utilise documentElement.scrollTo pour être plus compatible avec overflow:hidden
         window.scrollTo({
             top: positionY,
             behavior: 'smooth'
