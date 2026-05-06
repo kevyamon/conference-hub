@@ -7,6 +7,8 @@ const role = urlParams.get('role');
 const token = urlParams.get('token');
 const isMaster = (role === 'master' && token);
 
+console.log('🚀 Sync Client Initialized', { role, isMaster });
+
 // Configuration Pusher
 const pusher = new Pusher(PUSHER_KEY, {
     cluster: PUSHER_CLUSTER,
@@ -17,6 +19,14 @@ const pusher = new Pusher(PUSHER_KEY, {
 });
 
 const channel = pusher.subscribe('private-presentation');
+
+channel.bind('pusher:subscription_succeeded', () => {
+    console.log('✅ Subscribed to private-presentation');
+});
+
+channel.bind('pusher:subscription_error', (status) => {
+    console.error('❌ Subscription error:', status);
+});
 
 if (isMaster) {
     let lastScrollY = window.scrollY;
@@ -30,6 +40,7 @@ if (isMaster) {
                     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
                     const percentage = maxScroll > 0 ? currentScroll / maxScroll : 0;
                     
+                    console.log('📤 Sending scroll:', percentage);
                     channel.trigger('client-scroll', { p: percentage });
                     lastScrollY = currentScroll;
                 }
@@ -39,22 +50,28 @@ if (isMaster) {
     });
 
     // Synchronisation de la navigation pour le Master
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.nav-btn');
+        if (btn) {
             const targetUrl = btn.getAttribute('href');
             if (targetUrl && !targetUrl.startsWith('http') && !targetUrl.startsWith('#')) {
+                e.preventDefault();
+                console.log('📤 Sending navigation:', targetUrl);
+                
                 // Notifier l'audience
                 channel.trigger('client-nav', { url: targetUrl });
                 
-                // Préserver le statut Master sur la page suivante
-                e.preventDefault();
-                const separator = targetUrl.includes('?') ? '&' : '?';
-                window.location.href = `${targetUrl}${separator}role=${role}&token=${token}`;
+                // Laisser un petit délai pour l'envoi Pusher avant de changer de page
+                setTimeout(() => {
+                    const separator = targetUrl.includes('?') ? '&' : '?';
+                    window.location.href = `${targetUrl}${separator}role=${role}&token=${token}`;
+                }, 300);
             }
-        });
+        }
     });
 
 } else {
+    console.log('👥 Running in Audience mode');
     // Bloquer le scroll manuel pour l'audience
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
@@ -62,8 +79,8 @@ if (isMaster) {
 
     // Suivre la navigation du Master
     channel.bind('client-nav', (data) => {
+        console.log('📥 Received navigation:', data);
         if (data && data.url) {
-            // Éviter de recharger si on est déjà sur la bonne page
             if (!window.location.pathname.endsWith(data.url)) {
                 window.location.href = data.url;
             }
@@ -76,12 +93,12 @@ if (isMaster) {
         if (typeof data === 'object' && data.p !== undefined) {
             percentage = data.p;
         } else {
-            // Rétrocompatibilité au cas où
             const y = typeof data === 'object' ? data.y : data;
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             percentage = maxScroll > 0 ? y / maxScroll : 0;
         }
         
+        console.log('📥 Received scroll:', percentage);
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         const targetY = percentage * maxScroll;
         
