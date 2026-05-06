@@ -197,8 +197,9 @@
             }
 
             .nav-links {
-                gap: 0.4rem;
+                gap: 0.8rem;
                 overflow-x: auto;
+                scroll-behavior: smooth;
                 padding-left: 0.5rem;
                 -ms-overflow-style: none; /* IE and Edge */
                 scrollbar-width: none; /* Firefox */
@@ -350,7 +351,16 @@
     </section>
 
     <!-- Scripts de synchronisation OBLIGATOIRES -->
-    <script src="https://js.pusher.com/8.0/pusher.min.js"></script>
+    <script>
+        // Centrer le bouton actif dans la navigation mobile au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeBtn = document.querySelector('.nav-btn.active');
+            if (activeBtn && window.innerWidth < 768) {
+                activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        });
+    </script>
+    <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
     <script src="./sync-client.js"></script>
 </body>
 </html>
