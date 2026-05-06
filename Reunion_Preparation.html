@@ -184,9 +184,40 @@
         .serif { font-family: 'Playfair Display', serif; font-style: italic; }
 
         @media (max-width: 768px) {
+            .main-nav {
+                padding: 0.6rem 1.2rem;
+                width: 95%;
+                top: 10px;
+                border-radius: 30px;
+            }
+
+            .nav-logo img {
+                height: 35px;
+                width: 35px;
+            }
+
+            .nav-links {
+                gap: 0.4rem;
+                overflow-x: auto;
+                padding-left: 0.5rem;
+                -ms-overflow-style: none; /* IE and Edge */
+                scrollbar-width: none; /* Firefox */
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none; /* Chrome, Safari and Opera */
+            }
+
+            .nav-btn {
+                font-size: 0.65rem;
+                padding: 0.4rem 0.8rem;
+            }
+
             .theme-label { font-size: 3rem; }
             .action-grid { grid-template-columns: 1fr; }
             .glass-card { padding: 2rem; }
+            
+            body { padding-top: 80px; }
         }
     </style>
 </head>

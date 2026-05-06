@@ -238,7 +238,38 @@
         }
 
         /* MEDIA QUERIES */
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            .main-nav {
+                padding: 0.6rem 1.2rem;
+                width: 95%;
+                top: 10px;
+                border-radius: 30px;
+            }
+
+            .nav-logo img {
+                height: 35px;
+                width: 35px;
+            }
+
+            .nav-links {
+                gap: 0.4rem;
+                overflow-x: auto;
+                padding-left: 0.5rem;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-btn {
+                font-size: 0.65rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            body { padding-top: 80px; }
+
             .container {
                 padding: 1.5rem 1rem;
             }
