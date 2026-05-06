@@ -27,10 +27,29 @@
 
         /* Navigation Partagée */
         .main-nav {
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
-            padding: 1.5rem; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 4rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            filter: drop-shadow(0 0 10px var(--primary-glow));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
         }
 
         .nav-btn {
@@ -45,6 +64,19 @@
         body {
             font-family: 'Outfit', sans-serif; background-color: var(--bg-color); color: var(--text-color);
             line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; padding-top: 100px;
+        }
+
+        .hero-logo {
+            width: 160px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 30px var(--primary-glow));
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
         }
 
         body::before {
@@ -110,15 +142,23 @@
 <body>
 
     <nav class="main-nav">
-        <a href="Pitch_Conference_Club.html" class="nav-btn">Présentation</a>
-        <a href="faq.html" class="nav-btn">FAQ</a>
-        <a href="Dossier_Strategique.html" class="nav-btn">Stratégie</a>
-        <a href="Reunion_Preparation.html" class="nav-btn active">Réunion</a>
+        <div class="nav-logo">
+            <img src="/logo.png" alt="Club Informatique Logo">
+        </div>
+        <div class="nav-links">
+            <a href="Pitch_Conference_Club.html" class="nav-btn">Présentation</a>
+            <a href="faq.html" class="nav-btn">FAQ</a>
+            <a href="Dossier_Strategique.html" class="nav-btn">Stratégie</a>
+            <a href="Reunion_Preparation.html" class="nav-btn active">Réunion</a>
+        </div>
     </nav>
 
     <!-- SECTION 1: LE THÈME (L'ÉLECTROCHOC) -->
     <section>
         <div class="container">
+            <div style="text-align: center;">
+                <img src="/logo.png" alt="Logo Club Informatique" class="hero-logo">
+            </div>
             <div class="glass-card" style="border: 2px solid var(--primary);">
                 <div class="theme-label">THÈME</div>
                 <h1 class="theme-title">

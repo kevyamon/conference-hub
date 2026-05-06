@@ -26,11 +26,28 @@
         /* Navigation Partagée */
         .main-nav {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 4rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            filter: drop-shadow(0 0 10px var(--primary-glow));
+        }
+
+        .nav-links {
+            display: flex;
             gap: 1rem;
-            margin-bottom: 3rem;
-            padding-top: 2rem;
         }
 
         .nav-btn {
@@ -268,10 +285,15 @@
     <div class="container">
         <!-- NAVIGATION -->
         <nav class="main-nav">
-            <a href="Pitch_Conference_Club.html" class="nav-btn active">Présentation</a>
-            <a href="faq.html" class="nav-btn">FAQ</a>
-            <a href="Dossier_Strategique.html" class="nav-btn">Stratégie</a>
-            <a href="Reunion_Preparation.html" class="nav-btn">Réunion</a>
+            <div class="nav-logo">
+                <img src="/logo.png" alt="Club Informatique Logo">
+            </div>
+            <div class="nav-links">
+                <a href="Pitch_Conference_Club.html" class="nav-btn active">Présentation</a>
+                <a href="faq.html" class="nav-btn">FAQ</a>
+                <a href="Dossier_Strategique.html" class="nav-btn">Stratégie</a>
+                <a href="Reunion_Preparation.html" class="nav-btn">Réunion</a>
+            </div>
         </nav>
 
         <!-- HEADER -->
