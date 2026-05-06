@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Technique | Conférence Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --muted: #94a3b8;
+            --primary: #3b82f6; 
+            --gold: #fbbf24;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-red: #dc2626;
+        }
+
+        /* Navigation Partagée */
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-btn.active {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(251, 191, 36, 0.1);
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin: 0;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        /* FAQ Grid */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .question {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .question-number {
+            color: var(--primary);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+        }
+
+        .answer {
+            color: var(--muted);
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        footer {
+            margin-top: 5rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4ade80;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NAVIGATION -->
+        <nav class="main-nav">
+            <a href="Pitch_Conference_Club.html" class="nav-btn">Présentation</a>
+            <a href="faq.html" class="nav-btn active">FAQ</a>
+            <a href="Dossier_Strategique.html" class="nav-btn">Stratégie</a>
+        </nav>
+
+        <header>
+            <span class="badge">Anticipation & Stratégie</span>
+            <h1>Foire Aux Questions</h1>
+            <p style="color: var(--muted); margin-top: 1rem;">Itération technique sur les enjeux critiques du projet.</p>
+        </header>
+
+        <div class="faq-grid">
+            
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">01.</span>
+                    <span>Quel est le coût d'hébergement et de maintenance ?</span>
+                </div>
+                <div class="answer">
+                    L'architecture est conçue pour minimiser les charges financières. En exploitant des infrastructures cloud professionnelles (MongoDB Atlas, Vercel, Brevo), le coût de déploiement et d'opération est nul pour le volume attendu. C'est une solution à coût zéro pour un impact maximal.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">02.</span>
+                    <span>Comment le système gère-t-il la fraude ou le transfert de billets ?</span>
+                </div>
+                <div class="answer">
+                    Chaque billet intègre un identifiant unique (UUID) crypté dans le QR Code. Lors du premier scan, le statut passe à "Attended". Toute tentative de scanner une copie ou un transfert déclenche immédiatement une alerte d'invalidité sur le terminal de contrôle.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">03.</span>
+                    <span>Pourquoi privilégier le "sur-mesure" face aux formulaires standards ?</span>
+                </div>
+                <div class="answer">
+                    Les formulaires basiques ne permettent pas le contrôle d'accès en direct et projettent une image d'amateurisme. Une plateforme propriétaire démontre la capacité technique du club, automatise la logistique et instaure un standard d'excellence technologique.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">04.</span>
+                    <span>Quel matériel logistique est requis pour le scan à l'entrée ?</span>
+                </div>
+                <div class="answer">
+                    Aucun investissement matériel n'est nécessaire. L'application est nativement responsive. L'équipe d'organisation utilise simplement ses smartphones personnels. Le système exploite la caméra des terminaux pour lire les QR Codes instantanément.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">05.</span>
+                    <span>Quelle procédure en cas de coupure internet le jour J ?</span>
+                </div>
+                <div class="answer">
+                    Le tableau de bord inclut une fonction d'exportation CSV. La veille de l'événement, la liste complète est téléchargée. En cas de panne réseau absolue, le contrôle bascule sur un protocole d'émargement hors-ligne sans interrompre le flux des entrées.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">06.</span>
+                    <span>Le processus nécessite-t-il la création d'un compte utilisateur ?</span>
+                </div>
+                <div class="answer">
+                    Non, le parcours est optimisé pour une friction zéro. L'utilisateur renseigne uniquement les données essentielles (nom, email, filière). L'absence de création de mot de passe maximise le taux d'inscription tout en allégeant la base de données.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">07.</span>
+                    <span>Comment la sécurité des données est-elle garantie ?</span>
+                </div>
+                <div class="answer">
+                    La base de données est isolée. L'accès au Dashboard est strictement protégé par un Token JWT crypté. Seuls le président et l'architecte possèdent les identifiants, stockés secrètement dans les variables d'environnement du serveur.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">08.</span>
+                    <span>Que se passe-t-il si une adresse email erronée est renseignée ?</span>
+                </div>
+                <div class="answer">
+                    L'interface intègre une validation stricte côté client. Si le format de l'email est invalide, la soumission est bloquée. Si l'adresse est valide mais erronée, le billet est expédié dans le vide et l'accès sera refusé. La fiabilité de la donnée incombe à l'utilisateur.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">09.</span>
+                    <span>Quel est le délai de développement estimé ?</span>
+                </div>
+                <div class="answer">
+                    L'architecture étant déjà modélisée, le développement entre directement en phase d'exécution. En exploitant des environnements agentiques (AntiGravity), un Produit Minimum Viable (MVP) parfaitement fonctionnel peut être déployé en quelques jours.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    <span class="question-number">10.</span>
+                    <span>Cette infrastructure est-elle justifiée pour un premier événement ?</span>
+                </div>
+                <div class="answer">
+                    C'est lors du lancement qu'il faut établir l'autorité. Déployer un système sur mesure prouve instantanément l'expertise de l'équipe, dissipe les doutes de l'administration et fixe un standard de qualité pour l'avenir du club.
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Architecture Validée & Prête pour l'exécution
+            </div>
+            <p style="font-size: 0.8rem; color: var(--muted); margin-top: 1rem;">© 2026 Club Informatique - Lead Architect: KEVY</p>
+        </footer>
+    </div>
+
+</body>
+</html>

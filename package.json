@@ -1,0 +1,15 @@
+{
+  "name": "club-info-conference",
+  "version": "1.0.0",
+  "description": "Plateforme de Conférence Étudiante pour le Club Informatique",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pusher": "^5.3.3"
+  }
+}

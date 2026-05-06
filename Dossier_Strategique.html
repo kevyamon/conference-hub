@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier Stratégique | Lancement Club Informatique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --muted: #94a3b8;
+            --primary: #3b82f6; 
+            --gold: #fbbf24;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation Partagée */
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-btn.active {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(251, 191, 36, 0.1);
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin: 0 0 1.5rem 0;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .theme-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--gold);
+        }
+
+        .theme-title {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .theme-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sub-theme-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sub-theme-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        .sub-theme-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .pitch-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            border-left: 4px solid var(--gold);
+            padding-left: 2rem;
+            font-style: italic;
+        }
+
+        .title-idea {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .title-idea h3 {
+            color: var(--gold);
+            margin: 0 0 0.5rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+        }
+
+        .title-idea p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NAVIGATION -->
+        <nav class="main-nav">
+            <a href="Pitch_Conference_Club.html" class="nav-btn">Présentation</a>
+            <a href="faq.html" class="nav-btn">FAQ</a>
+            <a href="Dossier_Strategique.html" class="nav-btn active">Stratégie</a>
+        </nav>
+
+        <header>
+            <span class="badge">Masterplan Opérationnel</span>
+            <h1>Stratégie & Déploiement</h1>
+            <p class="subtitle">Dossier de préparation exhaustif pour l'Assemblée du Club Informatique. Propositions de thématiques, titres d'événements et allocution d'ouverture.</p>
+        </header>
+
+        <!-- 01. LE PITCH D'OUVERTURE -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>L'Allocution d'Ouverture (Le Pitch)</h2>
+            </div>
+            <div class="glass-panel">
+                <p style="color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Intervention prévue lors du tour de table</p>
+                <div class="pitch-text">
+                    "Bonjour à tous. Si nous sommes ici aujourd'hui pour lancer les activités de ce club, ce n'est pas pour répéter ce qui se fait déjà ailleurs. L'industrie technologique a subi une mutation irréversible. L'exécution manuelle, la syntaxe, le codage pur sont devenus des commodités gérées par l'Intelligence Artificielle. Ce qui a de la valeur aujourd'hui, ce n'est plus l'ouvrier qui tape le code, c'est l'architecte qui dirige le système.<br><br>
+                    Mon parcours dans le contrôle industriel m'a appris une loi fondamentale : l'absence de protocole mène au chaos. Nous devons concevoir ce club non pas comme un simple espace d'apprentissage, mais comme un laboratoire d'ingénierie et d'architecture digitale. Nous devons apprendre à nos membres à bâtir des produits concrets, à maîtriser des architectures MERN, et à piloter des agents IA. <br><br>
+                    Pour prouver cette vision, je n'aborde pas cette conférence avec de simples idées. J'ai architecturé une plateforme complète de gestion événementielle, avec émission de billets QR et contrôle d'accès en temps réel, qui gérera les entrées de notre propre conférence. C'est ce niveau d'exigence et de productivité que ce club doit incarner dès le premier jour."
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. PROPOSITIONS DE THÈMES -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Axes Majeurs & Thématiques</h2>
+            </div>
+            <p style="color: var(--muted); margin-bottom: 3rem;">Propositions de grandes directions pour la conférence inaugurale.</p>
+            
+            <div class="grid-2">
+                <div class="theme-card">
+                    <h3 class="theme-title">Axe 1 : Le Changement de Paradigme (AI Builder)</h3>
+                    <p class="theme-desc">Axer la conférence sur la transition entre le développeur classique et l'architecte propulsé par l'IA. Montrer que la logique métier prime sur la syntaxe.</p>
+                    <ul class="sub-theme-list">
+                        <li>L'évolution de l'IDE : D'éditeur de texte au Copilote Agentique.</li>
+                        <li>La Paresse Cognitive : Le piège mortel de l'ère IA.</li>
+                        <li>Déployer un MVP (Produit Minimum Viable) en 48 heures.</li>
+                    </ul>
+                </div>
+
+                <div class="theme-card">
+                    <h3 class="theme-title">Axe 2 : Ingénierie & Rigueur Industrielle</h3>
+                    <p class="theme-desc">Créer un pont entre les sciences d'ingénierie (contrôle qualité, protocoles) et le développement logiciel moderne.</p>
+                    <ul class="sub-theme-list">
+                        <li>Architecture MVC : L'usine de traitement de la donnée.</li>
+                        <li>Sécurité des systèmes : L'importance vitale du fichier .env et des JWT.</li>
+                        <li>Du cahier des charges au déploiement production.</li>
+                    </ul>
+                </div>
+
+                <div class="theme-card">
+                    <h3 class="theme-title">Axe 3 : Tech & Entrepreneuriat Digital</h3>
+                    <p class="theme-desc">Démontrer que coder n'est pas une fin en soi, mais un moyen de résoudre des problèmes réels et de bâtir des entreprises.</p>
+                    <ul class="sub-theme-list">
+                        <li>Créer un produit, pas juste un algorithme.</li>
+                        <li>UX/UI : Pourquoi l'expérience utilisateur décide du succès commercial.</li>
+                        <li>Étude de cas en direct : L'architecture de la plateforme Conférence Hub.</li>
+                    </ul>
+                </div>
+
+                <div class="theme-card">
+                    <h3 class="theme-title">Axe 4 : Fondations & Écosystème MERN</h3>
+                    <p class="theme-desc">Une approche plus technique pour rassurer les étudiants cherchant des compétences précises sur le marché de l'emploi.</p>
+                    <ul class="sub-theme-list">
+                        <li>React.js : Construire des interfaces modulaires et prestiges.</li>
+                        <li>Node.js & MongoDB : Gérer la donnée avec efficacité.</li>
+                        <li>L'art du "Prompt Maître" pour générer du code sécurisé.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. TITRES ACCROCHEURS -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Titres d'Événement (Naming)</h2>
+            </div>
+            <div class="glass-panel">
+                <p style="color: var(--muted); margin-bottom: 2rem;">Un événement d'envergure nécessite un titre qui marque les esprits et impose le respect institutionnel.</p>
+                
+                <div class="title-idea">
+                    <h3>Tech Vision 2026 : L'Ère de l'Architecte</h3>
+                    <p>Un titre visionnaire, idéal pour aborder la transition vers l'intelligence artificielle et la création de produits digitaux.</p>
+                </div>
+
+                <div class="title-idea">
+                    <h3>Code & Control : Bâtir le Web de Demain</h3>
+                    <p>Fait écho à la rigueur, à la maîtrise des systèmes informatiques et à la prise de pouvoir sur les technologies modernes.</p>
+                </div>
+
+                <div class="title-idea">
+                    <h3>The AI Builder Summit</h3>
+                    <p>Une approche internationale, premium et directe. Positionne immédiatement le club comme précurseur sur l'utilisation des IA agentiques.</p>
+                </div>
+
+                <div class="title-idea">
+                    <h3>Protocol Zero : Fondations de l'Ingénierie Digitale</h3>
+                    <p>Un titre qui évoque le lancement d'une nouvelle ère (Zero), parfait pour l'ouverture officielle des activités du club.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. LOGISTIQUE & ORGANISATION -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Recommandations Opérationnelles</h2>
+            </div>
+            <div class="grid-3">
+                <div class="glass-panel" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-top: 0;">1. Déploiement Plateforme</h3>
+                    <p style="font-size: 0.95rem; color: var(--muted);">Lancement de "Conférence Hub" 10 jours avant l'événement. Le QR Code sera la seule porte d'entrée pour quantifier l'audience et dimensionner la salle avec précision.</p>
+                </div>
+                <div class="glass-panel" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-top: 0;">2. Partenariats & Visibilité</h3>
+                    <p style="font-size: 0.95rem; color: var(--muted);">Utiliser l'architecture de la plateforme d'inscription comme vitrine technique pour attirer des sponsors (montrer que le club possède un vrai savoir-faire exécutif).</p>
+                </div>
+                <div class="glass-panel" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-top: 0;">3. Format de la Conférence</h3>
+                    <p style="font-size: 0.95rem; color: var(--muted);">Alterner entre sessions théoriques (Mindset) et démonstrations en direct (Live Coding IA). La salle doit voir l'architecture logicielle s'opérer en temps réel.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
