@@ -77,6 +77,26 @@ if (isMaster) {
     document.body.style.overflow = 'hidden';
     document.body.style.touchAction = 'none';
 
+    // Désactiver la navigation manuelle pour l'audience (visuel + blocage clic)
+    const disableNav = () => {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.6';
+            btn.style.cursor = 'default';
+        });
+    };
+    disableNav();
+    // Au cas où le DOM change
+    window.addEventListener('load', disableNav);
+
+    // Intercepter les clics résiduels
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.nav-btn')) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }, true);
+
     // Suivre la navigation du Master
     channel.bind('client-nav', (data) => {
         console.log('📥 Received navigation:', data);
