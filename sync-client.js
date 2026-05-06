@@ -27,12 +27,31 @@ if (isMaster) {
             throttleTimeout = setTimeout(() => {
                 const currentScroll = window.scrollY;
                 if (Math.abs(currentScroll - lastScrollY) > 5) {
-                    channel.trigger('client-scroll', { y: currentScroll });
+                    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                    const percentage = maxScroll > 0 ? currentScroll / maxScroll : 0;
+                    
+                    channel.trigger('client-scroll', { p: percentage });
                     lastScrollY = currentScroll;
                 }
                 throttleTimeout = null;
             }, 50);
         }
+    });
+
+    // Synchronisation de la navigation pour le Master
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const targetUrl = btn.getAttribute('href');
+            if (targetUrl && !targetUrl.startsWith('http') && !targetUrl.startsWith('#')) {
+                // Notifier l'audience
+                channel.trigger('client-nav', { url: targetUrl });
+                
+                // Préserver le statut Master sur la page suivante
+                e.preventDefault();
+                const separator = targetUrl.includes('?') ? '&' : '?';
+                window.location.href = `${targetUrl}${separator}role=${role}&token=${token}`;
+            }
+        });
     });
 
 } else {
@@ -41,12 +60,33 @@ if (isMaster) {
     document.body.style.overflow = 'hidden';
     document.body.style.touchAction = 'none';
 
+    // Suivre la navigation du Master
+    channel.bind('client-nav', (data) => {
+        if (data && data.url) {
+            // Éviter de recharger si on est déjà sur la bonne page
+            if (!window.location.pathname.endsWith(data.url)) {
+                window.location.href = data.url;
+            }
+        }
+    });
+
     channel.bind('client-scroll', (data) => {
-        const positionY = typeof data === 'object' ? data.y : data;
+        let percentage;
         
-        // On utilise documentElement.scrollTo pour être plus compatible avec overflow:hidden
+        if (typeof data === 'object' && data.p !== undefined) {
+            percentage = data.p;
+        } else {
+            // Rétrocompatibilité au cas où
+            const y = typeof data === 'object' ? data.y : data;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            percentage = maxScroll > 0 ? y / maxScroll : 0;
+        }
+        
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const targetY = percentage * maxScroll;
+        
         window.scrollTo({
-            top: positionY,
+            top: targetY,
             behavior: 'smooth'
         });
     });
