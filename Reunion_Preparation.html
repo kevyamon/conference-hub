@@ -12,7 +12,6 @@
 
     <style>
         :root {
-            /* Palette de Couleurs */
             --bg-color: #020617;
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
@@ -21,166 +20,91 @@
             --accent: #6366f1;
             --card-bg: rgba(15, 23, 42, 0.6);
             --border-color: rgba(255, 255, 255, 0.08);
-            --glass-shine: rgba(255, 255, 255, 0.03);
             --radius: 16px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* Navigation Partagée */
         .main-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            padding-top: 2rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(2, 6, 23, 0.8);
-            backdrop-filter: blur(10px);
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
+            padding: 1.5rem; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
 
         .nav-btn {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 800;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            transition: all 0.3s ease;
+            text-decoration: none; color: var(--text-muted); font-weight: 800; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color); border-radius: 50px; transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.03);
-            white-space: nowrap;
         }
 
-        .nav-btn:hover {
-            color: var(--primary);
-            border-color: var(--primary);
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .nav-btn.active {
-            color: #fbbf24;
-            border-color: #fbbf24;
-            background: rgba(251, 191, 36, 0.1);
-        }
+        .nav-btn.active { color: #fbbf24; border-color: #fbbf24; background: rgba(251, 191, 36, 0.1); }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            padding-top: 80px;
+            font-family: 'Outfit', sans-serif; background-color: var(--bg-color); color: var(--text-color);
+            line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; padding-top: 100px;
         }
 
         body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
             z-index: -1;
         }
 
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .hero { text-align: center; }
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, var(--text-muted));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2rem; }
+        .container { max-width: 1100px; width: 100%; margin: 0 auto; }
 
         .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 3rem;
-            margin-bottom: 2rem;
-            position: relative;
+            background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color);
+            border-radius: var(--radius); padding: 3.5rem; margin-bottom: 2.5rem; position: relative;
         }
 
-        .section-header {
-            margin-bottom: 3rem;
-            border-left: 4px solid var(--primary);
-            padding-left: 1.5rem;
+        /* Thème Massif */
+        .theme-label {
+            color: var(--primary); font-weight: 900; font-size: 5rem; letter-spacing: 0.2em;
+            text-align: center; opacity: 0.8; margin-bottom: -1rem;
         }
 
-        .section-header h2 { font-size: 2.5rem; }
-        .section-header p {
-            color: var(--primary);
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
+        .theme-title {
+            font-size: clamp(1.8rem, 5vw, 3.5rem); text-align: center; line-height: 1.2;
+            margin-bottom: 2.5rem; color: #fff; text-shadow: 0 0 20px var(--primary-glow);
         }
 
-        .highlight-text { color: var(--primary); font-weight: 600; }
-        .electrochoc { border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
-        
-        .axe-title {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .theme-footer {
+            border-top: 1px solid var(--border-color); padding-top: 2rem;
+            color: var(--text-muted); font-size: 1.1rem; text-align: center; font-style: italic;
         }
 
-        .role-club {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid var(--primary-glow);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-top: 1.5rem;
+        .section-header { margin-bottom: 3.5rem; border-left: 5px solid var(--primary); padding-left: 1.5rem; }
+        .section-header h2 { font-size: 2.8rem; letter-spacing: -1px; }
+
+        .axe-card { margin-bottom: 3rem; }
+        .axe-number { color: var(--primary); font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem; display: block; }
+        .axe-content { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+        .role-badge {
+            display: inline-block; background: rgba(59, 130, 246, 0.15); color: var(--primary);
+            padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; margin-bottom: 1rem;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
+        /* Plan d'Action Structuré */
+        .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; }
+        .action-card { border-left: 4px solid var(--accent); }
+        .action-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
+        .action-list { list-style: none; }
+        .action-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: var(--text-muted); }
+        .action-list li::before { content: "→"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
         .serif { font-family: 'Playfair Display', serif; font-style: italic; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .theme-label { font-size: 3rem; }
+            .action-grid { grid-template-columns: 1fr; }
+            .glass-card { padding: 2rem; }
         }
-        .animate-in { animation: fadeIn 0.8s ease forwards; }
-
     </style>
 </head>
 <body>
@@ -192,101 +116,115 @@
         <a href="Reunion_Preparation.html" class="nav-btn active">Réunion</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container animate-in">
-            <h1>L'Éveil de <br> <span class="serif">L'Étudiant Augmenté</span></h1>
-            <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
-                Quand le diplôme classique ne suffit plus, l'informatique devient l'armure de l'étudiant moderne.
-            </p>
-        </div>
-    </section>
-
-    <!-- Section 1: Le Constat Électrochoc -->
-    <section id="vision">
+    <!-- SECTION 1: LE THÈME (L'ÉLECTROCHOC) -->
+    <section>
         <div class="container">
-            <div class="section-header">
-                <p>Urgence Stratégique</p>
-                <h2>Le Diplôme Ne Suffit Plus</h2>
-            </div>
-            
-            <div class="glass-card electrochoc">
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    L'étudiant d'aujourd'hui sait que le marché du travail est saturé. Il a peur que son diplôme classique (Droit, Lettres, Économie) ne suffise plus pour se démarquer. Nous allons appuyer sur cette <span class="highlight-text">inquiétude légitime</span> et apporter la <span class="highlight-text">solution immédiate</span>.
-                </p>
-                <h3 style="font-size: 2rem; color: #fff; text-align: center;">
-                    "Devenez l'Étudiant Augmenté grâce au Numérique."
-                </h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 2: Les Trois Axes de la Transformation -->
-    <section id="conference">
-        <div class="container">
-            <div class="section-header">
-                <p>Cœur de la Conférence</p>
-                <h2>Les Axes de Puissance</h2>
-            </div>
-
-            <!-- AXE 1 -->
-            <div class="glass-card">
-                <h3 class="axe-title">Axe 1 : Le "Second Cerveau"</h3>
-                <p style="margin-bottom: 1rem;"><span class="highlight-text">Le Constat :</span> L'université exige de retenir des milliers d'informations, mais personne n'apprend aux étudiants comment s'organiser. La majorité travaille encore avec des méthodes obsolètes.</p>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Présentation des architectures de prise de notes connectées (Notion, Obsidian) et de la méthode du "Second Cerveau" de Tiago Forte. Utilisation de Zotero pour l'automatisation des bibliographies.</p>
-                
-                <div class="role-club">
-                    <p><strong>Mission du Club :</strong> Organisation de <span class="highlight-text">"Bootcamps de Productivité"</span> de 2 heures. L'étudiant repart avec son propre système Notion entièrement configuré pour sa filière par nos membres.</p>
-                </div>
-            </div>
-
-            <!-- AXE 2 -->
-            <div class="glass-card">
-                <h3 class="axe-title">Axe 2 : L'Intelligence Artificielle</h3>
-                <p style="margin-bottom: 1rem;"><span class="highlight-text">Le Constat :</span> L'IA fait peur ou est mal utilisée. Ceux qui l'ignorent seront remplacés par ceux qui la maîtrisent.</p>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Démystifier ChatGPT, Claude ou Perplexity. Maîtrise du "Prompt Engineering" appliqué : vulgariser des thèses complexes, générer des cas pratiques de droit ou simuler des entretiens.</p>
-                
-                <div class="role-club">
-                    <p><strong>Mission du Club :</strong> Ateliers de <span class="highlight-text">"Prompting Universitaire"</span> par filière. Création d'une bibliothèque de templates validés pour réviser intelligemment sans plagier.</p>
-                </div>
-            </div>
-
-            <!-- AXE 3 -->
-            <div class="glass-card">
-                <h3 class="axe-title">Axe 3 : L'Employabilité par la Preuve</h3>
-                <p style="margin-bottom: 1rem;"><span class="highlight-text">Le Constat :</span> À la sortie, tous les étudiants auront le même diplôme. Les recruteurs scannent les profils en seulement 6 secondes.</p>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Passer du format papier à la présence numérique active. Profils LinkedIn optimisés, automatisation des candidatures et création de mini-portfolios en ligne.</p>
-                
-                <div class="role-club">
-                    <p><strong>Mission du Club :</strong> La <span class="highlight-text">"Clinique Numérique"</span>. Audit technique des CV et aide à la mise en ligne des portfolios. Nous devenons leur support technique vers l'emploi.</p>
+            <div class="glass-card" style="border: 2px solid var(--primary);">
+                <div class="theme-label">THÈME</div>
+                <h1 class="theme-title">
+                    « Le Diplôme Ne Suffit Plus : <br>
+                    <span class="serif">Devenez l'Étudiant Augmenté</span> <br>
+                    grâce au Numérique. »
+                </h1>
+                <div class="theme-footer">
+                    "L'étudiant d'aujourd'hui sait que le marché du travail est saturé. Il a peur que son diplôme classique (Droit, Lettres, Économie) ne suffise plus pour se démarquer. Nous allons appuyer sur cette inquiétude légitime et apporter la solution immédiate."
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Feuille de Route Annuelle -->
-    <section id="roadmap">
+    <!-- SECTION 2: PROPOSITION D'AXE -->
+    <section id="axes">
         <div class="container">
             <div class="section-header">
-                <p>Cahier des Charges Opérationnel</p>
-                <h2>Activités & Feuille de Route</h2>
+                <p>Stratégie de Contenu</p>
+                <h2>Proposition d'axe</h2>
             </div>
-            
-            <div class="grid">
-                <div class="glass-card">
-                    <h3 style="margin-bottom: 1.5rem;">Trimestre 1 : Fondation</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Lancement de la Conférence Électrochoc.</p>
-                    <p><span class="highlight-text">Activité Clé :</span> Bootcamps Notion par filière (Droit, Santé, Sciences).</p>
+
+            <!-- Axe 1 -->
+            <div class="glass-card axe-card">
+                <span class="axe-number">AXE 01</span>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">L'Architecture du Savoir : Le "Second Cerveau"</h3>
+                <div class="axe-content">
+                    L'université nous submerge d'informations sans jamais nous apprendre à les gérer. La plupart des étudiants utilisent des méthodes de prise de notes linéaires et passives qui limitent leur compréhension. 
+                    <br><br>
+                    Nous proposons de transformer radicalement leur façon d'étudier en introduisant la notion de <strong>Mémoire Digitale Connectée</strong> (via Notion ou Obsidian). L'objectif est de construire un système où chaque cours, chaque lecture et chaque idée sont liés, créant ainsi une base de connaissance puissante et pérenne pour toute leur carrière.
                 </div>
-                <div class="glass-card">
-                    <h3 style="margin-bottom: 1.5rem;">Trimestre 2 : Augmentation</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Masterclass sur l'IA Générative et le Prompt Engineering.</p>
-                    <p><span class="highlight-text">Activité Clé :</span> Publication de la "Prompt Library" du Club.</p>
+                <div class="role-badge">Action Club : Bootcamps de Productivité</div>
+                <p style="color: var(--text-muted);">Mise en pratique immédiate : l'étudiant apporte son PC et repart avec un système de gestion de sa filière prêt à l'emploi.</p>
+            </div>
+
+            <!-- Axe 2 -->
+            <div class="glass-card axe-card">
+                <span class="axe-number">AXE 02</span>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">L'Intelligence Artificielle : Votre Tuteur de Poche</h3>
+                <div class="axe-content">
+                    L'IA ne doit pas être un outil de triche, mais un accélérateur de compréhension. Ignorer cette technologie aujourd'hui, c'est accepter d'être remplacé demain par ceux qui savent la piloter.
+                    <br><br>
+                    Nous allons enseigner l'art du <strong>Prompting Universitaire</strong> : comment utiliser l'IA (Claude, ChatGPT, Perplexity) pour vulgariser des concepts juridiques complexes, simuler des diagnostics médicaux ou s'entraîner à des entretiens d'embauche en temps réel.
                 </div>
-                <div class="glass-card">
-                    <h3 style="margin-bottom: 1.5rem;">Trimestre 3 : Impact</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Lancement de la Clinique Numérique et des audits de CV.</p>
-                    <p><span class="highlight-text">Activité Clé :</span> Hackathon "Portfolio Express" : Un site web en une journée.</p>
+                <div class="role-badge">Action Club : La Bibliothèque de Prompts</div>
+                <p style="color: var(--text-muted);">Mise à disposition de templates de requêtes IA spécifiques à chaque filière, validés pour garantir une utilisation éthique et performante.</p>
+            </div>
+
+            <!-- Axe 3 -->
+            <div class="glass-card axe-card">
+                <span class="axe-number">AXE 03</span>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">L'Employabilité par la Preuve</h3>
+                <div class="axe-content">
+                    Face à 500 CV identiques, le recruteur choisit celui qui <strong>prouve</strong> sa valeur. Le format papier est mort ; la présence numérique est la nouvelle norme.
+                    <br><br>
+                    Nous aidons les étudiants à construire leur <strong>Identité Numérique de Haute Précision</strong> : optimisation algorithmique de LinkedIn, automatisation des candidatures et création de portfolios en ligne qui démontrent leurs compétences réelles au-delà des notes.
+                </div>
+                <div class="role-badge">Action Club : La Clinique Numérique</div>
+                <p style="color: var(--text-muted);">Un service de support technique personnalisé où nos membres auditent les CV et assistent à la mise en ligne des projets personnels.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: CAHIER DES CHARGES & PLAN D'ACTION -->
+    <section id="actions">
+        <div class="container">
+            <div class="section-header">
+                <p>Cahier des Charges Annuel</p>
+                <h2>Plan d'Action du Club</h2>
+            </div>
+
+            <div class="action-grid">
+                <!-- Pôle Événementiel -->
+                <div class="glass-card action-card">
+                    <h3>Pôle Événementiel Phare</h3>
+                    <ul class="action-list">
+                        <li><strong>La Conférence Électrochoc :</strong> Lancement officiel avec démonstrations en direct de la puissance de l'étudiant augmenté.</li>
+                        <li><strong>Le Hackathon "Inter-Filières" :</strong> Résoudre un problème du campus en mixant Droit, Santé et Tech.</li>
+                    </ul>
+                </div>
+
+                <!-- Pôle Formation -->
+                <div class="glass-card action-card">
+                    <h3>Pôle Formation & Bootcamps</h3>
+                    <ul class="action-list">
+                        <li><strong>Bootcamps Productivité :</strong> Sessions intensives de 2h pour configurer les systèmes de prise de notes.</li>
+                        <li><strong>Masterclass IA :</strong> Formation avancée au prompting pour transformer l'IA en tuteur personnel.</li>
+                    </ul>
+                </div>
+
+                <!-- Pôle Services -->
+                <div class="glass-card action-card">
+                    <h3>Pôle Services & Support</h3>
+                    <ul class="action-list">
+                        <li><strong>La Clinique Numérique :</strong> Permanence hebdomadaire d'audit de CV et de support technique personnel.</li>
+                        <li><strong>Portfolio Builder :</strong> Aide à la création de sites vitrines pour les étudiants sortants.</li>
+                    </ul>
+                </div>
+
+                <!-- Pôle Ressources -->
+                <div class="glass-card action-card">
+                    <h3>Pôle Ressources Partagées</h3>
+                    <ul class="action-list">
+                        <li><strong>La "Prompt Library" :</strong> Base de données de templates de requêtes IA par matière universitaire.</li>
+                        <li><strong>Assistance Tech Campus :</strong> Support pour les logiciels universitaires critiques.</li>
+                    </ul>
                 </div>
             </div>
         </div>
